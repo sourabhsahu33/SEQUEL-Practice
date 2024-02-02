@@ -1,7 +1,4 @@
 create DATABASE collage;
-create DATABASE if not exists collage;
-
-
 USE collage;
 
 CREATE TABLE student(
@@ -32,11 +29,70 @@ city VARCHAR(20)
 INSERT INTO student_info (roll_no, name, marks, grade, city)
 VALUES 
 (20, "sourabh", 99, 'A' , "seoni"),
-(21, "Vivek", 99, 'A' , "seoni"),
-(22, "Harish", 99, 'A' , "seoni"),
-(23, "Divyansh", 99, 'A' , "seoni"),
-(24, "yogesh", 99, 'A' , "seoni");
+(21, "Vivek", 90, 'A' , "Chhapara"),
+(22, "Harish", 85, 'A' , "Ratlam"),
+(23, "Divyansh", 80, 'A' , "Pune"),
+(24, "yogesh", 45, 'A' , "C");
 
+INSERT INTO student_info VALUES (25, "Akshay", 99,"A", "SEONI");
+INSERT INTO student_info VALUES (26,"Ankit", 98, "A", "chh");
+
+SELECT name , marks, grade FROM student_info;
+SELECT city FROM student_info;
+SELECT DISTINCT city FROM student_info;
 SELECT * FROM student_info;
+SELECT * FROM student_info WHERE city ='SEONI';
+
+-- SELECT * FROM student_info WHERE marks > 80; 
+SELECT *
+FROM student_info 
+WHERE marks >= 85 OR  city = 'Chhapara';
+
+--  Clause operation perform 
+SELECT * 
+FROM student_info 
+WHERE marks BETWEEN 80 AND 99;
+
+SELECT * 
+FROM student_info 
+WHERE city in ("SEONI", "Pune", "Ratlam", "chh");
+
+SELECT * 
+FROM student_info 
+WHERE city not in ("SEONI", "Pune", "Ratlam", "chh");
+
+SELECT *
+FROM student_info
+WHERE marks >80
+LIMIT 4;
+
+SELECT * FROM student_info ORDER BY marks ASC;
+SELECT * FROM student_info order by city AND marks ASC;
+
+SELECT * FROM student_info ORDER BY marks desc limit 3;
+
+SELECT max(marks) FROM student_info;
+SELECT min(marks) FROM student_info;
+SELECT count(city) FROM student_info;
+SELECT avg(marks) FROM student_info;
+SELECT sum(marks) FROM student_info;
+SELECT count(grade) FROM student_info;
+
+SELECT city, count(roll_no)
+FROM student_info GROUP BY city;
+SELECT city, count(name)
+FROM student_info GROUP BY city;
+
+SELECT city,name, count(marks)
+FROM student_info GROUP BY city, name;
+
+SELECT city, max(marks)
+FROM student_info GROUP BY city;
+
+SELECT city, avg(marks)
+FROM student_info 
+GROUP BY city
+ORDER BY city DESC;
+
 SHOW TABLES;
 SHOW DATABASES;
