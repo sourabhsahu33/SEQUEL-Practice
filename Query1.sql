@@ -48,6 +48,24 @@ SELECT *
 FROM student_info 
 WHERE marks >= 85 OR  city = 'Chhapara';
 
+SELECT * from student_info;
+SELECT avg(marks) 
+FROM student_info
+WHERE marks > (SELECT avg(marks) from student_info);
+
+SELECT roll_no, name, marks
+FROM student_info
+WHERE marks > (SELECT AVG(marks) FROM student_info);
+
+SELECT roll_no, name
+FROM student_info
+WHERE roll_no % 2=0;
+
+SELECT roll_no , name 
+FROM student_info
+WHERE roll_no IN (20,22,24,26);
+
+
 --  Clause operation perform 
 SELECT * 
 FROM student_info 
@@ -93,6 +111,11 @@ SELECT city, avg(marks)
 FROM student_info 
 GROUP BY city
 ORDER BY city DESC;
+
+SELECT avg(marks)
+FROM student_info
+where marks > 85.1429;
+
 
 SHOW TABLES;
 SHOW DATABASES;
