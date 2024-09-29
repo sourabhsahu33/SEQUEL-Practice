@@ -65,3 +65,12 @@ SELECT student.student_id, student.student_name, course.course_name
 FROM student
 LEFT JOIN course ON student.course_id = course.course_id
 WHERE course.course_name = 'Math';
+
+
+select * from student as s 
+left join course as c 
+on s.course_id = c.course_id
+union
+select * from student as s 
+right join course as c 
+on s.course_id = c.course_id;
